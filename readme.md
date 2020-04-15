@@ -1,1 +1,2 @@
-Érettségi feladat: Sípálya
+Érettségi feladat: Lift
+
