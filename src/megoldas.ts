@@ -4,10 +4,6 @@ import LiftIgény from "./Liftigény";
 export default class Megoldas {
     private _liftIgények: LiftIgény[] = [];
 
-    public AllomanybaIr(fajlNev: string, kiirando: Array<string>): void {
-        fs.writeFileSync(fajlNev, kiirando.join("\r\n") + "\r\n");
-    }
-
     constructor(file: string) {
         fs.readFileSync(file)
             .toString()

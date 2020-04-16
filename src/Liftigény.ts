@@ -24,7 +24,7 @@ export default class LiftIgény {
     public get IndulóSzint(): number {
         return this._indulószint;
     }
-    public get CélSint(): number {
+    public get CélSzint(): number {
         return this._célszint;
     }
 
