@@ -2,7 +2,7 @@
 import fs from "fs";
 import http from "http";
 import url from "url";
-import Megoldas from "./megoldas";
+import Megoldás from "./megoldas";
 
 interface InputInterface {
     name: string;
@@ -25,12 +25,18 @@ export default class Content {
         res.write("<head>");
         res.write("<style>input, pre {font-family:monospace; font-size:1em; font-weight:bold;}</style>");
         res.write("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
-        res.write("<title>Közuti Ellenőrzés</title>");
+        res.write("<title>LiftIgények</title>");
         res.write("</head>");
         res.write("<body><form><pre>");
 
         // Kezd a kódolást innen -->
-        const megoldás = new Megoldas("igeny.txt");
+        const megoldás = new Megoldás("igeny.txt");
+
+        res.write("2. feladat.: Hányadik emeleten található a lift?<input type='number' name='emelet' value=${emelet} style='max-width:100px;' onChange='this.form.submit();'>\n");
+
+        res.write("3. feladat.: A lift a " + megoldás.UtolsóSzint + ". szinten áll az utolsó igény teljesítése után\n");
+
+        res.write("4. feladat.: Legalacsonyabb szint: " + megoldás.LegalacsonyabbSzint + ". szint" + " Legmagasabb szint: " + megoldás.LegmagasabbSzint);
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
