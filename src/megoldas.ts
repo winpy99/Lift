@@ -104,25 +104,25 @@ export default class Megoldas {
         }
         return minimum;
     }
-    public LiftIndulásFelfeléUtassal(): number {
+    public get LiftIndulásFelfeléUtassal(): number {
         let utassal = 0;
-        for (let index = 0; index < this.IgényekSzáma; index++) {
+        for (let index = 0; index < this._liftIgények.length; index++) {
             if (this._liftIgények[index].indulóSzint < this._liftIgények[index].célSzint) {
-                utassal += 1;
+                utassal = utassal + 1;
             }
         }
         return utassal;
     }
-    public LiftIndulásFelfeléUtasNélkül(): number {
+    public get LiftIndulásFelfeléUtasNélkül(): number {
         let utasNélkül = 0;
-        for (let index = 0; index < this.IgényekSzáma - 1; index++) {
+        for (let index = 0; index < this._liftIgények.length - 1; index++) {
             if (this._liftIgények[index].célSzint < this._liftIgények[index + 1].indulóSzint) {
-                utasNélkül += 1;
+                utasNélkül = utasNélkül + 1;
             }
         }
         return utasNélkül;
     }
-    public CsapatokIgényNélkül(): number[] {
+    public get CsapatokIgényNélkül(): number[] {
         const utazott: boolean[] = [];
         const nemutazott: number[] = [];
         for (let index = 0; index < this.CsapatokSzáma; index++) {
@@ -132,7 +132,7 @@ export default class Megoldas {
             utazott[this._liftIgények[index].csapat] = true;
         }
         for (let index = 0; index < utazott.length; index++) {
-            if (utazott[index] === false) {
+            if (utazott[index] == false) {
                 nemutazott.push(index);
             }
         }
