@@ -41,13 +41,13 @@ export default class Megoldas {
             });
     }
     public get UtolsóSzint(): number {
-        return this._liftIgények[this._liftIgények.length - 1].CélSzint;
+        return this._liftIgények[this._liftIgények.length - 1].célSzint;
     }
     private get LegalacsonyabbIndulóSzint(): number {
         let minimumInduló = 100;
         this.LiftIgények.forEach((igény) => {
-            if (igény.IndulóSzint < minimumInduló) {
-                minimumInduló = igény.IndulóSzint;
+            if (igény.indulóSzint < minimumInduló) {
+                minimumInduló = igény.indulóSzint;
             }
         });
         return minimumInduló;
@@ -55,8 +55,8 @@ export default class Megoldas {
     private get LegalacsonyabbCélSzint(): number {
         let minimumCél = 100;
         this.LiftIgények.forEach((igény) => {
-            if (igény.CélSzint < minimumCél) {
-                minimumCél = igény.CélSzint;
+            if (igény.célSzint < minimumCél) {
+                minimumCél = igény.célSzint;
             }
         });
         return minimumCél;
@@ -65,11 +65,11 @@ export default class Megoldas {
     private get LegmagasabbIndulóSzint(): number {
         let maximum = 0;
         this.LiftIgények.forEach((igény) => {
-            if (igény.IndulóSzint > maximum) {
-                maximum = igény.IndulóSzint;
+            if (igény.indulóSzint > maximum) {
+                maximum = igény.indulóSzint;
             }
-            if (igény.CélSzint > maximum) {
-                maximum = igény.CélSzint;
+            if (igény.célSzint > maximum) {
+                maximum = igény.célSzint;
             }
         });
         return maximum;
@@ -77,11 +77,11 @@ export default class Megoldas {
     private get LegmagasabbCélSzint(): number {
         let maximum = 0;
         this.LiftIgények.forEach((igény) => {
-            if (igény.IndulóSzint > maximum) {
-                maximum = igény.IndulóSzint;
+            if (igény.indulóSzint > maximum) {
+                maximum = igény.indulóSzint;
             }
-            if (igény.CélSzint > maximum) {
-                maximum = igény.CélSzint;
+            if (igény.célSzint > maximum) {
+                maximum = igény.célSzint;
             }
         });
         return maximum;
@@ -103,5 +103,39 @@ export default class Megoldas {
             minimum = this.LegalacsonyabbIndulóSzint;
         }
         return minimum;
+    }
+    public LiftIndulásFelfeléUtassal(): number {
+        let utassal = 0;
+        for (let index = 0; index < this.IgényekSzáma; index++) {
+            if (this._liftIgények[index].indulóSzint < this._liftIgények[index].célSzint) {
+                utassal += 1;
+            }
+        }
+        return utassal;
+    }
+    public LiftIndulásFelfeléUtasNélkül(): number {
+        let utasNélkül = 0;
+        for (let index = 0; index < this.IgényekSzáma - 1; index++) {
+            if (this._liftIgények[index].célSzint < this._liftIgények[index + 1].indulóSzint) {
+                utasNélkül += 1;
+            }
+        }
+        return utasNélkül;
+    }
+    public CsapatokIgényNélkül(): number[] {
+        const utazott: boolean[] = [];
+        const nemutazott: number[] = [];
+        for (let index = 0; index < this.CsapatokSzáma; index++) {
+            utazott.push(false);
+        }
+        for (let index = 0; index < this._liftIgények.length; index++) {
+            utazott[this._liftIgények[index].csapat] = true;
+        }
+        for (let index = 0; index < utazott.length; index++) {
+            if (utazott[index] === false) {
+                nemutazott.push(index);
+            }
+        }
+        return nemutazott;
     }
 }

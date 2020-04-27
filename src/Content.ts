@@ -37,6 +37,8 @@ export default class Content {
         res.write("3. feladat.: A lift a " + megoldás.UtolsóSzint + ". szinten áll az utolsó igény teljesítése után\n");
 
         res.write("4. feladat.: Legalacsonyabb szint: " + megoldás.LegalacsonyabbSzint + ". szint" + " Legmagasabb szint: " + megoldás.LegmagasabbSzint);
+        res.write("5. feladat.: Utassal induló lift felfelé: " + megoldás.LiftIndulásFelfeléUtassal + "\nUtas nélkül: " + megoldás.LiftIndulásFelfeléUtasNélkül + 1);
+        res.write("6. feladat.: Nem utazott csapatok: " + megoldás.CsapatokIgényNélkül);
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");

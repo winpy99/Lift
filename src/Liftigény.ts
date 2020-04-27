@@ -6,25 +6,25 @@ export default class LiftIgény {
     private _indulószint: number;
     private _célszint: number;
 
-    public get Óra(): number {
+    public get óra(): number {
         return this._óra;
     }
 
-    public get Perc(): number {
+    public get perc(): number {
         return this._perc;
     }
 
-    public get Másodperc(): number {
+    public get másodperc(): number {
         return this._másodperc;
     }
 
-    public get Csapat(): number {
+    public get csapat(): number {
         return this._csapatSorszáma;
     }
-    public get IndulóSzint(): number {
+    public get indulóSzint(): number {
         return this._indulószint;
     }
-    public get CélSzint(): number {
+    public get célSzint(): number {
         return this._célszint;
     }
 
